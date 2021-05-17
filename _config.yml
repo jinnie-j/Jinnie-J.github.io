@@ -103,7 +103,7 @@ author:
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-       url: "jjesweet@naver.com"
+      url: jjesweet@naver.com
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
@@ -115,7 +115,7 @@ author:
       # url: "https://facebook.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-       url: "http://github.com/Jinnie-J"
+      url: "https://github.com/Jinnie-J/Jinnie-J.github.io"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
