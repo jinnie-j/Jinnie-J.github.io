@@ -58,10 +58,10 @@ last_modified_at: 2021-05-17
 
 [GitHub][1]
 
-문서 안에서 [참조 링크]를 그대로 사용할 수도 있습니다.
+문서 안에서 [참조 링크]를 그대로 사용할 수도 있다.
 
-다음과 같이 문서 내 일반 URL이나 꺾쇠 괄호(`< >`, Angle Brackets)안의 URL은 자동으로 링크를 사용합니다.
-구글 홈페이지: https://google.com
+다음과 같이 문서 내 일반 URL이나 꺾쇠 괄호(`< >`, Angle Brackets)안의 URL은 자동으로 링크를 사용한다.   
+구글 홈페이지: <https://google.com>
 네이버 홈페이지: <https://naver.com>
 
 [Dribbble link]: https://dribbble.com
@@ -113,11 +113,9 @@ function func() {
 ## 수평선(Horizontal rule)
 
 ---
-(---)
-***
-(***)
-___
-(___)
+(---,***,___) 세번 씩 사용
+
+
 
 <br>
 
