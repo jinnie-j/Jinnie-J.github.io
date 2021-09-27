@@ -1,0 +1,174 @@
+---
+title:  "Clean Code"
+excerpt: "Clean Code 정리"
+
+categories:
+  - Blog
+tags:
+  - [Blog, Java]
+
+toc: true
+toc_sticky: true
+ 
+date: 2021-09-27
+last_modified_at: 2021-09-27
+---
+
+# Clean Code
+
+## 의미있는 이름
+### 의도를 분명히 밝혀라
+- 변수(혹은 함수나 클래스)의 존재 이유는?
+- 수행 기능은?
+- 사용 방법은?   
+```
+int d;  //경과 시간(단위: 날짜)
+이름 d는 아무 의미도 드러나지 않는다. 경과 시간이나 날짜라는 느낌이 안 든다. 측정하려는 값과 단위를 표현하는 이름이 필요하다.
+
+int elapsedTimeInDays;
+int daysSinceCreation;
+int daysSinceModification;
+int fileAgeIndDays;
+
+의도가 드러나는 이름을 사용하면 코드 이해와 변경이 쉬워진다.
+```
+### 그릇된 정보를 피하라
+- hp, aix, sco는 변수 이름으로 적합하지 않다. 유닉스 플랫폼이나 유닉스 변종을 가리키는 이름이기 때문이다. 
+- 실제 List가 아니라면, accountList라 명명하지 않는다. 프로그래머에게 List라는 단어는 특수한 의미다. -> accountGroup, bunchOfAccounts, Accounts라 명명한다.
+- 서로 흡사한 이름을 사용하지 않도록 주의한다.
+- 유사한 개념은 유사한 표기법을 사용한다. 일관성이 떨어지는 표기법은 그릇된 정보다.
+
+### 의미 있게 구분하라
+- 연속된 숫자를 덧붙이거나 불용어를 추가하는 방식은 적절하지 못하다. 이름이 달라야 한다면 의미도 달라져야 한다.
+```
+public static void copyChars(char a1[], char a2[]){
+    for(int i=0; i<a1.length; i++){
+        a2[i]=a1[i]
+    }
+}
+```
+함수 인수 이름으로 source와 destination을 사용한다면 코드 읽기가 훨씬 더 쉬워진다.
+- 불용어를 추가한 이름 역시 아무런 정보도 제공하지 못한다. Info나 Data는 a, an, the와 마찬가지로 의미가 불분명한 불용어이다.
+
+### 발음하기 쉬운 이름을 사용하라
+- 사람들은 단어에 능숙하다. 우리 두뇌에서 상당 부분은 단어라는 개념만 전적으로 처리한다.
+    ```
+    class DtaRcrd102{
+        private Date genymdhms;
+        private Date modymdhms;
+        private final String pszqint="102;
+    }
+
+    class Customer{
+        private Date generationTimestamp;
+        private Date modificationTimestamp;
+        private final String recordId= "102";
+    }
+    아래의 코드는 보다 지적인 대화가 가능하고, 더욱 의미가 와닿게 된다.
+    ```
+
+### 검색하기 쉬운 이름을 사용하라
+- 긴 이름이 짧은 이럼보다 좋다. 검색하기 쉬운 이름이 상수보다 좋다.
+- 이름 길이는 범위 크기에 비례해야 한다. 
+### 인코딩을 피하라
+- 굳이 부담을 더하지 않아도 이름에 인코딩할 정보는 아주 많다. 유형이나 범위정보까지 인코딩에 넣으면 그만큼 이름을 해독하기 어려워진다.
+
+### 클래스 이름
+- 클래스 이름과 객체 이름은 명사나 명사구가 적합하다. Customer, WikiPage, Account, AddressParser 등이 좋은 예다. 동사는 사용하지 않는다.
+### 메서드 이름
+- 메서드 이름은 동사나 동사구가 적합하다. postPayment, deletePage, save 등이 좋은 예다. 접근자, 변경자, 조건자는 javabean 표준에 따라 값 앞에 get,set,is를 붙인다.
+- 생성자를 중복정의(overload)할 때는 정적 팩토리 메서드를 사용한다.
+    ```
+    Complex fulcrumPoint = Complex.FromRealNumber(23.0);
+    ```
+
+### 기발한 이름은 피하라
+- 특정 문화에서만 사용하는 농담은 피하는 편이 좋다. 의도를 분명하고 솔직하게 표현하라.
+
+### 한 개념에 한 단어를 사용하라
+- 추상적인 개념 하나에 단어 하나를 선택해 이를 고수한다. 똑같은 메서드를 클래스마다 fetch, retrieve, get으로 제각각 부르면 혼란스럽다.
+
+
+
+## 함수
+### 작게 만들어라
+- 중첩 구조가 생길만큼 함수가 커져서는 안 된다. 함수에서 들여쓰기 수준은 1단이나 2단을 넘어서면 안 된다. 그래야 함수는 읽고 이해하기 쉬워진다.
+
+### 한 가지만 해라
+- 지정된 함수 이름 아래에서 추상화 수준이 하나인 단계만 수행한다면 그 함수는 한 가지 작업만 한다. 
+
+### Switch 문
+- switch문은 본질적으로 N가지를 처리하기 때문에 작게 만들기 어렵다. 그럼에도 다형성을 활용하여 조금은 개선할 수 있다.
+    ```
+    public Money calculatePay(Employee e) throws InvalidExployeeType {
+    switch (e.type) {
+        case COMMISSIONED:
+            return calculateCommissionedPay(e);
+        case HOURLY:
+            return calculateHourlyPay(e);
+        case SALARIED:
+            return calculateSalariedPay(e);
+        default:
+            throw new InvalidExployeeType(e.type);
+        }
+    }
+    ```
+
+    위 코드는 몇 가지 문제가 있다
+    1. 함수가 길다. 새로운 직원 유형을 추가하면 더욱 길어진다.
+    2. '한 가지' 작업만 수행하지 않는다.
+    3. SRP(Single Responsibility Principle)을 위반한다.
+    4. OCP(Open Closed Prinicple)을 위반한다.
+    무엇보다 가장 심각한 문제는 위 함수와 구조가 동일한 함수가 무한정 존재할 수 있다.
+
+    ```
+    public interface EmployeeFactory {
+    public Employee makeEmployee(EmployeedRecord r) throws InvalidEmployeeType;
+    }
+
+    public class EmployeeFactoryImpl implements EmployeeFactory {
+        public Employee makeEmployee(EmployeeRecord r) throws InvalidEmployeeType {
+            switch (r.type) {
+                case COMMISSIONED:
+                    return new CommissionedEmployyee(r);
+                case HOURLY:
+                    return new HourlyEmployee(r);
+                case SALARIED:
+                    return new SalariedEmployee(r);
+                default:
+                    thorw new InvalidEmployeeType(r.type);
+            }
+        }
+    }
+    ```
+    이렇게 switch문을 상속 관계로 추상 팩토리에 숨겨서 노출되지 않도록 하고, 다형성을 이용해 적절한 Employee 파생 클래스의 인스턴스를 생성하도록 수정한다.
+    
+### 함수 당 추상화 수준은 하나로
+- 함수가 확실히 '한 가지' 작업만 하려면 함수 내 모든 문장의 추상화 수준이 동일해야 한다. 
+
+### 서술적인 이름을 사용하라
+- 서술적인 이름을 사용하면 개발자 머릿속에서도 설계가 뚜렷해지므로 코드를 개선하기 쉬워진다. 
+
+### 함수 인수
+- 함수 인수에서 이상적인 인수 개수는 0개(무항)다. 다음은 1개(단항)고, 다음은 2개(이항)다. 3개(삼항)는 가능한 피하는 편이 좋다.
+
+### 명령과 조회를 분리하라
+- 함수는 뭔가를 수행하거나 뭔가에 답하거나 둘 중 하나만 해야 한다. 객체 상태를 변경하거나 아니면 객체 정보를 반환하거나 둘 중 하나다.
+    ```
+    if(set("username", "unclebob))...
+    -> 함수를 호출하는 코드만 봐서는 의미가 모호하다. 
+
+    if(attributeExists("username")){
+        setAttribute("username", "unclebob");
+    }
+    -> 명령과 조회를 분리해 혼란을 없앤다.
+    ```
+
+### 오류 코드보다 예외를 사용하라
+- 명령 함수에서 오류 코드를 반환하는 방식은 명령/조회 분리 규칙을 미묘하게 위반한다. 자칫하면 if문에서 명력을 표현식으로 사용하기 쉬운 탓이다.
+- 오류 코드 대신 예외를 사용하면 오류 처리 코드가 원래 코드에서 분리되므로 코드가 깔끔해진다.
+
+### 함수를 어떻게 짜죠?
+- 소프트웨어를 짜는 행위는 여느 글짓기와 비슷하다. 초안은 대개 서투르고 어수선하므로 원하는 대로 읽힐 때까지 말을 다듬고 문장을 고치고 문단을 정리한다.
+- 처음에는 길고 복잡하다. 들여쓰기 단계도 많고 중복된 루프도 많다. 하지만 서투른 코드를 빠짐없이 테스트하는 단위 테스트 케이스도 만든다.
+- 그 후 코드를 다듬고, 함수를 만들고, 이름을 바꾸고, 중복을 제거한다. 메서드를 줄이고 순서를 바꾼다. 때로는 전체 클래스를 쪼개기도 한다. 이와중에도 코드는 항상 단위 테스트를 통과한다.
