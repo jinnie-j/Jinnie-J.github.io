@@ -1,5 +1,5 @@
 ---
-title:  "Clean Code"
+title:  "Clean Code Review"
 excerpt: "Clean Code 정리"
 
 categories:
@@ -21,17 +21,18 @@ last_modified_at: 2021-09-27
 - 변수(혹은 함수나 클래스)의 존재 이유는?
 - 수행 기능은?
 - 사용 방법은?   
-```
-int d;  //경과 시간(단위: 날짜)
-이름 d는 아무 의미도 드러나지 않는다. 경과 시간이나 날짜라는 느낌이 안 든다. 측정하려는 값과 단위를 표현하는 이름이 필요하다.
+    ```
+    int d;  //경과 시간(단위: 날짜)
+    이름 d는 아무 의미도 드러나지 않는다. 경과 시간이나 날짜라는 느낌이 안 든다. 측정하려는 값과 단위를 표현하는 이름이 필요하다.
 
-int elapsedTimeInDays;
-int daysSinceCreation;
-int daysSinceModification;
-int fileAgeIndDays;
+    int elapsedTimeInDays;
+    int daysSinceCreation;
+    int daysSinceModification;
+    int fileAgeIndDays;
 
-의도가 드러나는 이름을 사용하면 코드 이해와 변경이 쉬워진다.
-```
+    의도가 드러나는 이름을 사용하면 코드 이해와 변경이 쉬워진다.
+    ```
+
 ### 그릇된 정보를 피하라
 - hp, aix, sco는 변수 이름으로 적합하지 않다. 유닉스 플랫폼이나 유닉스 변종을 가리키는 이름이기 때문이다. 
 - 실제 List가 아니라면, accountList라 명명하지 않는다. 프로그래머에게 List라는 단어는 특수한 의미다. -> accountGroup, bunchOfAccounts, Accounts라 명명한다.
@@ -40,13 +41,13 @@ int fileAgeIndDays;
 
 ### 의미 있게 구분하라
 - 연속된 숫자를 덧붙이거나 불용어를 추가하는 방식은 적절하지 못하다. 이름이 달라야 한다면 의미도 달라져야 한다.
-```
-public static void copyChars(char a1[], char a2[]){
-    for(int i=0; i<a1.length; i++){
-        a2[i]=a1[i]
+    ```
+    public static void copyChars(char a1[], char a2[]){
+        for(int i=0; i<a1.length; i++){
+            a2[i]=a1[i]
+        }
     }
-}
-```
+    ```
 함수 인수 이름으로 source와 destination을 사용한다면 코드 읽기가 훨씬 더 쉬워진다.
 - 불용어를 추가한 이름 역시 아무런 정보도 제공하지 못한다. Info나 Data는 a, an, the와 마찬가지로 의미가 불분명한 불용어이다.
 
@@ -142,7 +143,7 @@ public static void copyChars(char a1[], char a2[]){
     }
     ```
     이렇게 switch문을 상속 관계로 추상 팩토리에 숨겨서 노출되지 않도록 하고, 다형성을 이용해 적절한 Employee 파생 클래스의 인스턴스를 생성하도록 수정한다.
-    
+
 ### 함수 당 추상화 수준은 하나로
 - 함수가 확실히 '한 가지' 작업만 하려면 함수 내 모든 문장의 추상화 수준이 동일해야 한다. 
 
