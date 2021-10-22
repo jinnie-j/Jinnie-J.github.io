@@ -1,6 +1,6 @@
 ---
-title:  "Clean Code Review"
-excerpt: "Clean Code - 깨끗한 코드, 의미 있는 이름, 함수"
+title:  "Clean Code_깨끗한 코드, 의미있는 이름, 함수"
+excerpt: "Clean Code Review - 깨끗한 코드, 의미 있는 이름, 함수"
 
 categories:
   - Blog

@@ -1,6 +1,6 @@
 ---
-title:  "Clean Code Review"
-excerpt: "Clean Code - 주석"
+title:  "Clean Code_주석"
+excerpt: "Clean Code Review - 주석"
 
 categories:
   - Blog
