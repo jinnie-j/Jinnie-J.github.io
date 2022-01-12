@@ -92,7 +92,7 @@ last_modified_at: 2022-01-12
     inner join delivery delivery2_ on order0_.delivery_id=delivery2_.delivery_id 
     ```
 - 객체를 모두 따로 조회하여 가져옴으로써 성능상 문제가 발생할 수 있다. -> N+1문제
-
+- join 조건을 제외하고 실제 질의하는 대상 Entity에 대한 컬럼만 조회
 
 ### fetch join
 - JPQL
@@ -126,6 +126,7 @@ last_modified_at: 2022-01-12
     inner join delivery delivery2_ on order0_.delivery_id=delivery2_.delivery_id
     ```
 - 일반 조인에서는 단순히 member, delivery의 식별자 값만 가지고 있었다면, 패치 조인에서는 member, delivery 원본 객체를 가져왔다.
+- 실제 질의하는 대상 Entity와 Fetch join이 걸려있는 Entity를 포함한 컬럼을 함께 조회
 
 
 ### 정리
