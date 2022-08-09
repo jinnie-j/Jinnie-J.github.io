@@ -6,17 +6,17 @@
 /* Colors */
 $background-color: #ffffff !default;
 $text-color: #000000 !default;
-$muted-text-color: #2b4d3e !default;
-$primary-color: #167c50 !default;
-$border-color: mix(#fff, #3f6149, 75%) !default;
+$muted-text-color: #724809 !default;
+$primary-color: #724809 !default;
+$border-color: mix(#fff, #996210, 75%) !default;
 $footer-background-color: $primary-color !default;
-$link-color: #4fc78f !default;
+$link-color: #d68f23 !default;
 $masthead-link-color: $text-color !default;
 $masthead-link-color-hover: $text-color !default;
 $navicon-link-color-hover: mix(#fff, $text-color, 80%) !default;
 
 .page__footer {
-  color: #27362e !important; // override
+  color: #d68f23 !important; // override
 }
 
 .page__footer-follow .social-icons .svg-inline--fa {
