@@ -64,7 +64,8 @@ last_modified_at: 2022-09-13
         }
         return MaxSum;
     }
-    ```
+    ```   
+    
  #### 분할정복법
  - 먼저 배열을 오른쪽 Part와 왼쪽 Part로 나눈다. 이를 배열L, 배열R 이라고 하자
  1. 배열 L에서 최대 부분 배열 합 찾기 (MaxLeft)
@@ -122,5 +123,4 @@ last_modified_at: 2022-09-13
         }
         return MaxSum;
     }
-
     ```
