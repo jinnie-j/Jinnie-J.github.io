@@ -124,20 +124,20 @@ last_modified_at: 2022-10-09
 - Parameter Level
     - Parameter에 @ModelAttribute를 설정할 수 있다.
     - VO(Value Objetct)를 Controller메소드 파라미터로 사용하여 웹 요청 파라미터의 값이 binding된다.
-    - Client로 넘어가는 Model값에 자동으로 VO 데이터가 담긴다.
-    ```jsp
-    <form:form commandName="inputVO">
-        <form:input path="name"/>
-        <form:input path="num"/>
-    </form:form>
-    ```
-    ```java
-    @RequestMapping("/getUserInputForm.do")
-    public Sting getUserInputForm(@ModelAttrbute("inputVO") EmployeeVO employeeVO){
-        //Bind된 파라미터를 Model에 담는다
-        EmployeeVO resultVO = employeeService.selectEmployee(employeeVO);
-    }
-    ```
+    - Client로 넘어가는 Model값에 자동으로 VO 데이터가 담긴다.   
+        ```html
+        <form:form commandName="inputVO">
+            <form:input path="name"/>
+            <form:input path="num"/>
+        </form:form>
+        ```
+        ```java
+        @RequestMapping("/getUserInputForm.do")
+        public Sting getUserInputForm(@ModelAttrbute("inputVO") EmployeeVO employeeVO){
+            //Bind된 파라미터를 Model에 담는다
+            EmployeeVO resultVO = employeeService.selectEmployee(employeeVO);
+        }
+        ```
 #### @BindingResult
 - @ModelAttribute와 함께 사용되어, 요청 파라미터를 VO의 멤버변수로 변환할 때 에러가 발생했는지 여부를 알려준다. 
     ```java
