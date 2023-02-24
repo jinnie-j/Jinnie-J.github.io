@@ -28,10 +28,11 @@ last_modified_at: 2022-10-11
         //private Driver driver = new Driver2();
 
         public void moveCar(){
-            drver.drive();
+            driver.drive();
         }
     }
     ```
+
 #### IoC 방식 
 - 팩토리 패턴의 장점을 더하여 결합성이 낮아진다. 실행 시점에 클래스간의 관계가 형성이 된다.
     ```xml
@@ -55,11 +56,11 @@ last_modified_at: 2022-10-11
 #### IoC의 장점
 - 인터페이스 기반 설계가 가능
 - 컴퍼넌트 재사용성 증가
-- 체게적이고 효율적인 Dependency 관리
+- 체계적이고 효율적인 Dependency 관리
 
 ### IoC 구현
 
-#### DEpendency Injection(DI)
+#### Dependency Injection(DI)
 - 클래스 사이에 필요한 의존관계를 빈 설정 정보를 바탕으로 컨테이너가 자동으로 연결해주는 것
 
 #### DI 방법
@@ -72,7 +73,7 @@ last_modified_at: 2022-10-11
 
 #### IoC Container
 - POJO이 생성, 초기화, 서비스 소멸에 관한 모든 권한을 가지면서 POJO이 생명주기를 관리
-- 개발자가 직접 인스턴스를 관리하는 방식이 아닌 컨테이너로의 위임을 통해 제공하는 것이 IoC 패터
+- 개발자가 직접 인스턴스를 관리하는 방식이 아닌 컨테이너로의 위임을 통해 제공하는 것이 IoC 패턴
 - IoC Container의 장점
     - Transaction 처리, 인스턴스 Pooling 기능, Security와 같은 복잡한 기능들을 컨테이너를 이용함으로서 해결
     - Test의 용이성(품질 향상), 개발 생산성 향상
@@ -85,7 +86,7 @@ last_modified_at: 2022-10-11
 #### Annotation을 통한 Bean 정의 및 주입
 - 주입할 Bean 클래스 생성
     ```java
-   @Service(name = "employeeservice)
+   @Service(name = "employeeservice")
    public class EmployeeServiceImpl implements EmployeeService}
    //생략
    }
@@ -94,7 +95,7 @@ last_modified_at: 2022-10-11
     ```java
     @Controller
     public class EmployeeController{
-        @Resource(name="employeeService)
+        @Resource(name="employeeService")
         private EmployeeService employeeService;
         //생략
     }
@@ -102,12 +103,13 @@ last_modified_at: 2022-10-11
 - Bean 설정(context-common.xml)
     - scan 대상 패키지와 유형을 정의하며, 개별 bean에 대한 설정은 필요없음
     - component-scan: Annocation을 기반으로 Bean을 Container에 등록하고 Bean간의 주입을 수행함 
-        ```html
+        ```xml
         <context:component-scan base-package="cevonframe.sample">
         <context:include-filter type="annotation expression="org.springframework.streotype.service">
         <context:include-filter type="annotaion" expression = "org.springframework.stereotype.Controller"/>
         </context:component-scan>
         ```
+    
 #### xml을 통한 Bean 설정과 Annotation을 통한 주입
 - 주입할 Bean 클래스를 생성
     ```java

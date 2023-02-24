@@ -241,14 +241,16 @@ import문 하나와 @Autowired 애노테이션을 이용하면 설정자 메서�
 
 #### @Autowired의 마법
 기존 설정
+
 | Car.java | expert.xml |
 |--|--|
-| @Autowired Tire tire; | < bean id="tire" class="expert005.AmericaTire">< /bean>
+| @Autowired Tire tire; | < bean id="tire" class="expert005.AmericaTire">< /bean> |
 
 변경 설정
+
 | Car.java | expert.xml |
 |--|--|
-| @Autowired Tire tire; | < bean class="expert005.AmericaTire">< /bean>
+| @Autowired Tire tire; | < bean class="expert005.AmericaTire">< /bean> |
 
 변경 설정에서 bean의 id 속성이 없는데도, @Autowired가 지정된 tire 속성과 expert.xml 파일에서 bean id 속성이 일치하는 것을 찾아 매칭시켰다.
 
@@ -275,7 +277,7 @@ import문 하나와 @Autowired 애노테이션을 이용하면 설정자 메서�
 - 반면 < property>는 유지보수성이 좋다.
 - 프로젝트의 규모가 커지면 XML 파일의 규모가 커지기 마련인데 XML 파일도 용도별로 분리할 수 있다. 
 
-> @Autowired와 @Resourcd 중에서는 @Resource를 추천한다.   
+> @Autowired와 @Resource 중에서는 @Resource를 추천한다.   
 @Resource와 < property> 중에서는 < property>를 추천한다.
 
 ---

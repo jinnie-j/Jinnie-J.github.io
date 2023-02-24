@@ -74,7 +74,7 @@ last_modified_at: 2022-10-09
     ```xml
     <context:component-scan base-package="springframe.sample">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
-        <context:exclude-filter="annotation" expression="org.springframework.stereotype.Service"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
     ```
@@ -125,7 +125,7 @@ last_modified_at: 2022-10-09
     - Parameter에 @ModelAttribute를 설정할 수 있다.
     - VO(Value Objetct)를 Controller메소드 파라미터로 사용하여 웹 요청 파라미터의 값이 binding된다.
     - Client로 넘어가는 Model값에 자동으로 VO 데이터가 담긴다.   
-        ```html
+        ```xml
         <form:form commandName="inputVO">
             <form:input path="name"/>
             <form:input path="num"/>
@@ -138,6 +138,7 @@ last_modified_at: 2022-10-09
             EmployeeVO resultVO = employeeService.selectEmployee(employeeVO);
         }
         ```
+
 #### @BindingResult
 - @ModelAttribute와 함께 사용되어, 요청 파라미터를 VO의 멤버변수로 변환할 때 에러가 발생했는지 여부를 알려준다. 
     ```java
@@ -153,6 +154,7 @@ last_modified_at: 2022-10-09
     ```
 - Controller에서는 BindingResult의 hasErrors() 호출 결과에 따라 에러처리를 할 수 있다. Exception을 던져서 공통 에러페이지로 보내거나, 다시 입력 폼 화면으로 forward할 수 있다.
 - 입력 폼으로 forward하는 경우 화면에서 <form:errors path="num"/> 태그를 사용하면 BindingResult에 담긴 에러메시지를 출력할 수 있다.
+
 #### @SessionAttribute
 - Session에 담긴 attribute를 삭제할 때는 SessionStatus의 setComplete()를 사용한다.
 - @SessionAttribute는 클래스 레벨에서 선언할 수 있다.

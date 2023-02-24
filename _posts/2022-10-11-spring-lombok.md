@@ -49,7 +49,7 @@ last_modified_at: 2022-10-11
     @Service
     public class UserService{
         private UserRepository userRepository;
-        private passwordEncoder passwordEncoder;
+        private PasswordEncoder passwordEncoder;
 
         @Autowired
         public UserService userService(UserRepository userRepository, PasswordEncoder passwordEncoder){
